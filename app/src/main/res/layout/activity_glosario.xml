@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Glosario"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/encuesta_3"
+        android:visibility="visible"
+        android:layout_margin="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/btn_encuesta"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sección de impactos"
+                android:fontFamily="sans-serif-black"
+                android:textSize="33dp"
+                android:gravity="center_horizontal"
+                android:layout_margin="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ayúdanos a saber qué impactos tienen los lugares, donde se localizan y qué aspecto tienen. Sigue las instrucciones a continuación:\n
+\n1. Selecciona un punto concreto del lugar, por ejemplo: una pared, una sala, un piso, una columna, etc.\n
+\n2. Consigue tu objeto-escala; este objeto debe ser pequeño, reconocible y  estar completo, por ejemplo: moneda, tapa de botella, tarjeta,envoltorio de algún alimento, etc. No pueden ser pedazos de objetos o elementos de la naturaleza como hojas, palos, ramas o piedras.\n
+\n3. Revisa el glosario ilustrado para conocer qué impactos podrían aparecer en el lugar. \n
+\n4. Observa con atención el lugar que seleccionaste para encontrar algún impacto; si lo encuentras, coloca el objeto-escala al lado y toma una foto.\n
+\n5. Sube esta foto a la aplicación e indica la fecha en qué tomaste la foto y el impacto al que corresponde. \n"
+                android:justificationMode="inter_word"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejemplo:"
+                android:fontFamily="sans-serif-black"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ejemplo"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:id="@+id/boton_3"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#12AA06"
+                android:layout_marginBottom="30dp"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <!-- Fin encuesta 3 -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:id="@+id/glosario">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/btn_encuesta"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Glosario"
+                android:fontFamily="sans-serif-black"
+                android:textSize="33dp"
+                android:gravity="center_horizontal"
+                android:layout_margin="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IMPACTOS EN LA ESTRUCTURA"
+                android:fontFamily="sans-serif-black"
+                android:textSize="23dp"
+                android:gravity="left" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GRIETA: separación del material o la estructura en dos partes. Si atraviesa la estructura de lado a lado podemos llamarla FRACTURA; si es muy fina y delgada podemos llamarla FISURA.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/grieta"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DESINTEGRACIÓN: el material se deshace en porciones muy pequeñas o en polvo.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/fisura"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FRAGMENTACIÓN: rotura de una parte o de todo el material en pedazos de formas y tamaños variables.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/fragmentacion"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DESPRENDIMIENTOS: pérdida del material que puede tener muchas formas: ampollas, cráter, lámina, escama, agujero….\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/desprendimientos"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FALTANTE: espacio vacío donde antes había material, puede que sea por culpa del vandalismo o por cualquier otra amenaza.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/faltante"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DEFORMACIÓN: cambio de la forma original sin roturas ni grietas.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IMPACTOS EN LA SUPERFICIE"
+                android:fontFamily="sans-serif-black"
+                android:textSize="23dp"
+                android:gravity="left" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="EROSIÓN: desgaste por viento o agua que deja la superficie del material con formas suaves.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GRAFFITIS Y PINTADAS: inscripciones o dibujos con pintura o rayando la superficie del material.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PÁTINA: cambio de aspecto de la superficie del material por el paso del tiempo.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SUCIEDAD, DEPÓSITOS Y COSTRAS: polvo, manchas y acumulación de materiales externos en la superficie del material.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/suciedad_1"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CAMBIO DE COLOR: modificación del color de manera localizada.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CRISTALIZACIÓN DE SALES: acumulación de sales en la superficie del material.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/cristalizacion_sales"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BRILLO: la superficie tiene un aspecto como de espejo.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BIODETERIORO: presencia de organismos vivos como animales y plantas que viven sobre o dentro del material, por ejemplo: hongos, moho, murciélagos, ratas, termitas, etc.\n"
+                android:textSize="20dp"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/biode"
+                android:layout_marginBottom="15dp"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:id="@+id/boton_4"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#12AA06"
+                android:layout_marginBottom="30dp"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Encuestas"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll_encuesta_inicial"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/encuesta_inicial"
+            android:visibility="visible"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Encuesta del lugar"
+                android:fontFamily="sans-serif-black"
+                android:textSize="23dp"
+                android:gravity="center_horizontal"
+                android:layout_margin="70dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="Nombre del lugar"
+                android:id="@+id/nombre_lugar"
+                android:maxLines="5"
+                android:visibility="visible"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="Período de observación"
+                android:id="@+id/periodo_observacion"
+                android:maxLines="5"
+                android:visibility="visible"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Qué relación tiene con el lugar?"
+                android:fontFamily="sans-serif-black"
+                android:textSize="23dp"
+                android:layout_marginTop="15dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vivo al lado"
+                    android:textSize="18dp"
+                    android:layout_marginTop="9dp"/>
+
+                <CheckBox
+                    android:id="@+id/encuesta_inicial_pregunta_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Está en mi corregimiento"
+                    android:textSize="18dp"
+                    android:layout_marginTop="9dp"/>
+
+                <CheckBox
+                    android:id="@+id/encuesta_inicial_pregunta_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trabajo cerca"
+                    android:textSize="18dp"
+                    android:layout_marginTop="9dp"/>
+
+                <CheckBox
+                    android:id="@+id/encuesta_inicial_pregunta_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Es un sitio de encuentro"
+                    android:textSize="18dp"
+                    android:layout_marginTop="9dp"/>
+
+                <CheckBox
+                    android:id="@+id/encuesta_inicial_pregunta_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paso cada día por allí"
+                    android:textSize="18dp"
+                    android:layout_marginTop="9dp"/>
+
+                <CheckBox
+                    android:id="@+id/encuesta_inicial_pregunta_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Otro"
+                android:id="@+id/otro"
+                android:maxLines="5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="visible"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="En una palabra ¿Qué sentimientos te genera el sitio?"
+                android:fontFamily="sans-serif-black"
+                android:textSize="23dp"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Que sentimiento te genera"
+                android:id="@+id/sentimiento"
+                android:maxLines="5"
+                android:visibility="visible"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Siguiente"
+                android:id="@+id/boton_encuesta_lugar"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#12AA06"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Fin encuesta lugar -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/bienvenida_vulnerabilidad"
+        android:visibility="gone"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/btn_encuesta"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vulnerabilidad del lugar"
+            android:fontFamily="sans-serif-black"
+            android:textSize="23dp"
+            android:gravity="center_horizontal"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="La vulnerabilidad se puede definir como: Debilidad o fragilidad física, económica, social, ambiental o institucional. Ayúdanos a saber como es la vulnerabilidad del sitio, marca la casilla si es vulnerable. Por favor responde las siguientes preguntas:"
+            android:textSize="20dp"
+            android:justificationMode="inter_word"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            android:id="@+id/boton_vulnerabilidad_lugar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#12AA06"/>
+
+    </LinearLayout>
+
+    <!-- Fin vulnerabilidad lugar -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/encuesta_1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/btn_encuesta"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vulnerabilidad del lugar"
+                android:fontFamily="sans-serif-black"
+                android:textSize="23dp"
+                android:gravity="center_horizontal"
+                android:layout_margin="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marca las casillas para afirmar las preguntas*"
+                android:textSize="16dp"
+                android:textColor="#DD2929"
+                android:paddingLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar está alejado de la costa?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_1"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar está alejado de la erosión costera?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_2"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar está protegido de las olas, las mareas y las corrientes?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_3"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar se cuida y se protege?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_4"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar está limpio y sin basura?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_5"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Las actividades que se realizan ayudan al cuidado \ndel lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_6"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Las casas alrededor del sitio ayudan al cuidado del lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_7"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Los negocios alrededor del lugar ayudan a su cuidado?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_8"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Las actividades que se realizan en el lugar son legales y autorizadas?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_9"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿La comunidad local tiene acceso?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_10"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar es un punto de reunión o encuentro para la comunidad?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_11"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar es importante para la cultura y la identidad de las comunidades?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_12"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Se practican tradiciones y costumbres de las comunidades en el lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_13"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay negocios que vinculen a la comunidad?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_14"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿La comunidad tiene trabajo en el lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_15"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El lugar da ganancias económicas para la comunidad?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_16"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿El uso del lugar está relacionado con lo histórico y patrimonial?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_17"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay actividades turísticas en el lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_18"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay tiendas, restaurantes u otros en el lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_19"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay actividades culturales que se hagan en el sitio?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_20"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay vigilancia en el lugar? (personal o cámaras de seguridad)"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_21"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay carteles con información histórica del lugar?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_22"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay avisos para los visitantes?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_23"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Han puesto baños, han arreglado la entrada o algún otro tipo de mejora?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_24"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Es fácil llegar y entrar al sitio?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_25"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿Hay actividades culturales que se hagan en el sitio?"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"/>
+
+                    <CheckBox android:id="@+id/encuesta_uno_caja_26"
+                        android:layout_width="27dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="20dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Siguiente"
+                    android:id="@+id/boton_1"
+                    android:backgroundTint="#12AA06"
+                    android:layout_marginBottom="30dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Fin encuesta 1 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/bienvenida_amenaza"
+        android:visibility="gone"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/btn_encuesta"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amenaza"
+            android:fontFamily="sans-serif-black"
+            android:textSize="33dp"
+            android:gravity="center_horizontal"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Las amenazas se pueden definir como: Fenómenos, sustancias o situaciones que pueden dañar un lugar.
+Ayúdanos a saber cuáles son las amenazas del lugar y como actúan, marca la casilla si el lugar está en peligro por las siguientes amenazas, y responde las preguntas para describir qué está ocurriendo.
+\n\nA continuación podrá realizar su repectiva publicación del evento que esta viviendo en estos momentos..."
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:justificationMode="inter_word"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            android:id="@+id/boton_amenaza"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#12AA06"
+            android:layout_marginBottom="30dp"/>
+
+    </LinearLayout>
+
+    <!-- Fin bienvenida amenaza -->
+
+    <!-- Fin encuesta 2 -->
+
+
+</LinearLayout>
+

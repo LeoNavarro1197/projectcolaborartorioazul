@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center"
+    tools:context=".LoginActivity"
+    android:background="@drawable/fondo_init">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:src="@drawable/logo_uno"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
+                android:hint="Email"
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
+                android:hint="Contraseña"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"/>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Iniciar sesión"
+                android:textSize="16dp"
+                android:id="@+id/login"
+                android:textColor="#fff"
+                android:background="@drawable/button_background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes una cuenta? Registrate"
+                android:id="@+id/txt_signup"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_uno"
+                android:layout_marginTop="80dp"/>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="400dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:background="@drawable/intro"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="¿Te gustaría convertirte en el guardián del patrimonio histórico en la Isla de Tierrabomba  en tiempos de cambio climático? Nuestra aplicación te invita a ser parte del movimiento. Comparte tus observaciones, ya sea mediante texto, grabaciones de audio, fotografías o videos, acerca de cómo el cambio climático impacta el invaluable legado marítimo y costero de Cartagena de Indias. Tu contribución se integrará en una base de datos esencial que nos permitirá evaluar y preservar estos tesoros culturales en riesgo.
+                                    \n\n¡Únete y marca la diferencia en la lucha contra el cambio climático!"
+                    android:textSize="16dp"
+                    android:justificationMode="inter_word"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Ingresar"
+                android:textSize="16dp"
+                android:textColor="#fff"
+                android:background="@drawable/button_background"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "995953429183",
+    "project_id": "colaborartorioazul-63982",
+    "storage_bucket": "colaborartorioazul-63982.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995953429183:android:36238770b160216d32d40a",
+        "android_client_info": {
+          "package_name": "com.colaborartorioazul.colaborartorioazulproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm9_t5s2sSuziQRUt7f0G7UEDBqkzP8oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

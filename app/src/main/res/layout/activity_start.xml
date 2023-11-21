@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp"
+    android:layout_height="match_parent"
+    tools:context=".StartActivity"
+    android:background="@drawable/fondo_init">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/start">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:src="@drawable/logo_uno"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Iniciar sesión"
+            android:textSize="16dp"
+            android:id="@+id/login"
+            android:textColor="#fff"
+            android:background="@drawable/button_background"/>
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Regístrate"
+            android:textSize="16dp"
+            android:id="@+id/register"
+            android:textColor="#fff"
+            android:background="@drawable/button_background"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/intro">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_uno"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="350dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/intro"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="¿Te gustaría convertirte en el guardián del patrimonio histórico en la Isla de Tierrabomba  en tiempos de cambio climático? Nuestra aplicación te invita a ser parte del movimiento. Comparte tus observaciones, ya sea mediante texto, grabaciones de audio, fotografías o videos, acerca de cómo el cambio climático impacta el invaluable legado marítimo y costero de Cartagena de Indias. Tu contribución se integrará en una base de datos esencial que nos permitirá evaluar y preservar estos tesoros culturales en riesgo.
+                                    \n\n¡Únete y marca la diferencia en la lucha contra el cambio climático!"
+                android:textSize="12dp"
+                android:justificationMode="inter_word"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/btnDownload"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="Descargar PDF"
+                    android:onClick="descargarPDF"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/pdf_image"
+                    android:layout_marginRight="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baja el Kit de monitoreo de impactos y amenazas que acompañen las fotos que tomes a tus sitios y lugares representativos."
+                    android:justificationMode="inter_word"
+                    android:textSize="12dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Ingresar"
+            android:textSize="16dp"
+            android:id="@+id/boton_intro"
+            android:textColor="#fff"
+            android:background="@drawable/button_background"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
