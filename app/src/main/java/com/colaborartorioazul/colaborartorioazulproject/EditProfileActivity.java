@@ -1,15 +1,21 @@
 package com.colaborartorioazul.colaborartorioazulproject;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,11 +41,13 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    ImageView close, image_profile;
+    ImageView close, image_profile, imageView;
     TextView save, tv_change;
     MaterialEditText fullname, username, bio;
 
@@ -49,6 +57,14 @@ public class EditProfileActivity extends AppCompatActivity {
     private StorageTask uploadTask;
     StorageReference storageRef;
 
+
+    //Nueva implementacion
+    Button tomarFoto, galeria;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 2;
+    public Uri selectedImageUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +72,15 @@ public class EditProfileActivity extends AppCompatActivity {
 
         close = findViewById(R.id.close);
         image_profile = findViewById(R.id.image_profile);
+        imageView = findViewById(R.id.image_profile);
         save = findViewById(R.id.save);
         tv_change = findViewById(R.id.tv_change);
         fullname = findViewById(R.id.fullname);
         username = findViewById(R.id.username);
         bio = findViewById(R.id.bio);
+
+        tomarFoto = findViewById(R.id.tomar_foto);
+        galeria = findViewById(R.id.galeria);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         storageRef = FirebaseStorage.getInstance().getReference("uploads");
@@ -73,7 +93,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 fullname.setText(user.getFullname());
                 username.setText(user.getUsername());
                 bio.setText(user.getBio());
-                Glide.with(getApplicationContext()).load(user.getImageurl()).into(image_profile);
+                Glide.with(getApplicationContext()).load(user.getImageurl()).into(imageView);
             }
 
             @Override
@@ -95,26 +115,35 @@ public class EditProfileActivity extends AppCompatActivity {
                 updateProfile(fullname.getText().toString(),
                         username.getText().toString(),
                         bio.getText().toString());
+                uploadImage();
+            }
+        });
+
+        galeria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
+        tomarFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCamera();
             }
         });
 
         tv_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CropImage.activity()
-                        .setAspectRatio(1,1)
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .start(EditProfileActivity.this);
+                //
             }
         });
 
         image_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CropImage.activity()
-                        .setAspectRatio(1,1)
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .start(EditProfileActivity.this);
+                //
             }
         });
     }
@@ -143,11 +172,11 @@ public class EditProfileActivity extends AppCompatActivity {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setMessage("Subiendo");
         pd.show();
-        if (mImageUri != null){
+        if (selectedImageUri != null){
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+                    + "." + getFileExtension(selectedImageUri));
 
-            uploadTask = fileReference.putFile(mImageUri);
+            uploadTask = fileReference.putFile(selectedImageUri);
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -186,7 +215,75 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+    private void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST);
+    }
+
+    private void openCamera() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission granted, open gallery
+                    openGallery();
+                } else {
+                    // Permission denied, show a message or handle accordingly
+                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+            // Other cases for other permissions...
+        }
+    }
+
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == PICK_IMAGE_REQUEST && data != null) {
+                // Imagen seleccionada de la galería
+                selectedImageUri = data.getData();
+                setImageUri(selectedImageUri);
+            } else if (requestCode == REQUEST_IMAGE_CAPTURE && data != null) {
+                // Imagen capturada por la cámara
+                Bundle extras = data.getExtras();
+                if (extras != null) {
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    imageView.setImageBitmap(imageBitmap);
+                    // Convierte la imagen a Uri
+                    selectedImageUri = getImageUri(getApplicationContext(), imageBitmap);
+                }
+            }
+        }
+    }
+
+    private void setImageUri(Uri imageUri) {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Uri getImageUri(Context context, Bitmap bitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
+        return Uri.parse(path);
+    }
+
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -200,5 +297,5 @@ public class EditProfileActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "¡Algo salió mal!", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }

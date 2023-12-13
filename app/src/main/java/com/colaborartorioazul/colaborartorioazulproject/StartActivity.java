@@ -1,5 +1,6 @@
 package com.colaborartorioazul.colaborartorioazulproject;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -34,6 +35,7 @@ public class StartActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     LinearLayout start, intro;
     private static final int REQUEST_PERMISSION = 1;
+    private static final int REQUEST_PERMISSION_CAMERA = 1;
 
     @Override
     protected void onStart() {
@@ -116,6 +118,13 @@ public class StartActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION);
             }
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA);
+            }
+        }
     }
 
     @Override
@@ -125,6 +134,14 @@ public class StartActivity extends AppCompatActivity {
                 // Permiso concedido
             } else {
                 Toast.makeText(this, "Se necesita permiso para escribir en el almacenamiento externo", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == REQUEST_PERMISSION_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permiso concedido
+            } else {
+                Toast.makeText(this, "Se necesita permiso para ingresar en la camara de tu dispositivo", Toast.LENGTH_SHORT).show();
             }
         }
     }

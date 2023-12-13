@@ -59,7 +59,7 @@
         android:layout_marginBottom="50dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="En este apartado se veran reflejadas las palabras mas usadas por nuestra gente. Proximamente"
+        android:text="En este apartado se veran reflejadas las palabras más usadas por nuestra gente. Proximamente"
         android:textSize="23dp" />
 
 </RelativeLayout>

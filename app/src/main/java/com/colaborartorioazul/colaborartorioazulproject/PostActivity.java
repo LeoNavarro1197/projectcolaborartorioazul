@@ -1,22 +1,28 @@
 package com.colaborartorioazul.colaborartorioazulproject;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,6 +49,8 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class PostActivity  extends AppCompatActivity implements OnMapReadyCallback {
@@ -57,6 +65,15 @@ public class PostActivity  extends AppCompatActivity implements OnMapReadyCallba
     EditText description, title;
     private GoogleMap mMap;
     public static boolean bandera = false;
+
+
+    //Nueva implementacion cargar foto
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 2;
+    public ImageView imageView;
+    public Uri selectedImageUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +99,27 @@ public class PostActivity  extends AppCompatActivity implements OnMapReadyCallba
             finish();
         }
 
+        imageView = findViewById(R.id.image_added);
+
+        // Set up a button or any UI element to trigger the image selection
+        // For example, you can use a Button and set an OnClickListener
+
+        Button pickImageButton = findViewById(R.id.galeria);
+        pickImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
+        Button captureImageButton = findViewById(R.id.tomar_foto);
+        captureImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCamera();
+            }
+        });
+
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,9 +136,9 @@ public class PostActivity  extends AppCompatActivity implements OnMapReadyCallba
             }
         });
 
-        CropImage.activity()
+        /*CropImage.activity()
                 .setAspectRatio(1,1)
-                .start(PostActivity.this);
+                .start(PostActivity.this);*/
     }
 
     private String getFileExtension(Uri uri){
@@ -113,11 +151,11 @@ public class PostActivity  extends AppCompatActivity implements OnMapReadyCallba
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setMessage("Tú publicación se realizará en cuanto estés conectado a internet. Mientras, puedes seguir navegando en la aplicación.\n¡NO CIERRES LA APP!");
         pd.show();
-        if (mImageUri != null){
+        if (selectedImageUri != null){
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+                    + "." + getFileExtension(selectedImageUri));
 
-            uploadTask = fileReference.putFile(mImageUri);
+            uploadTask = fileReference.putFile(selectedImageUri);
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -177,7 +215,37 @@ public class PostActivity  extends AppCompatActivity implements OnMapReadyCallba
         }
     }
 
-    @Override
+    private void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST);
+    }
+
+    private void openCamera() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission granted, open gallery
+                    openGallery();
+                } else {
+                    // Permission denied, show a message or handle accordingly
+                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+            // Other cases for other permissions...
+        }
+    }
+
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -192,6 +260,46 @@ public class PostActivity  extends AppCompatActivity implements OnMapReadyCallba
             startActivity(new Intent(PostActivity.this, MainActivity.class));
             finish();
         }
+    }*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == PICK_IMAGE_REQUEST && data != null) {
+                // Imagen seleccionada de la galería
+                selectedImageUri = data.getData();
+                setImageUri(selectedImageUri);
+
+            } else if (requestCode == REQUEST_IMAGE_CAPTURE && data != null) {
+                // Imagen capturada por la cámara
+                Bundle extras = data.getExtras();
+                if (extras != null) {
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    imageView.setImageBitmap(imageBitmap);
+                    // Convierte la imagen a Uri
+                    selectedImageUri = getImageUri(getApplicationContext(), imageBitmap);
+
+                }
+            }
+        }
+    }
+
+    private void setImageUri(Uri imageUri) {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Uri getImageUri(Context context, Bitmap bitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
+        return Uri.parse(path);
     }
 
     private void getLocalizacion() {

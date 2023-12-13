@@ -48,57 +48,95 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerInside"
-            android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/image_added"/>
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:hint="Titulo"
-            android:id="@+id/title_description"
-            android:maxLines="5"
-            android:visibility="visible"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            android:hint="Descripción"
-            android:id="@+id/description"
-            android:maxLines="5"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center"
+                    android:src="@drawable/placeholder"
+                    android:id="@+id/image_added"/>
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/map"
-            tools:context=".MapsActivity"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_margin="8dp"/>
+                    <Button
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tomar Foto"
+                        android:id="@+id/tomar_foto"
+                        android:layout_marginRight="5dp"/>
 
-    </LinearLayout>
+                    <Button
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:text="Galeria"
+                        android:id="@+id/galeria"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="Descríbenos con una palabra que sientes"
+                    android:id="@+id/title_description"
+                    android:maxLines="5"
+                    android:visibility="visible"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Añade una descripción detallada de la situación"
+                    android:id="@+id/description"
+                    android:maxLines="5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp">
+
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/map"
+                    tools:context=".MapsActivity"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
